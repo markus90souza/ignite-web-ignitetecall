@@ -7,7 +7,7 @@ export const bootCss = globalCss({
     margin: 0,
   },
   body: {
-    backgroundColor: '$gray800',
+    backgroundColor: '$gray900',
     color: '$gray100',
     '-webkit-font-smoothing': 'antialiased',
   },
