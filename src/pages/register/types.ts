@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const usernameSchema = z.object({
+export const registerSchema = z.object({
   username: z
     .string()
     .min(3, { message: 'O username deve conter no minimo 3 caracteres' })
@@ -8,6 +8,10 @@ export const usernameSchema = z.object({
       message: 'O username não pode conter caracteres especiais',
     })
     .transform((value) => value.toLowerCase()),
+
+  name: z
+    .string()
+    .min(3, { message: 'O nome deve conter no minimo 3 caracteres' }),
 })
 
-export type UsernameFormData = z.infer<typeof usernameSchema>
+export type RegisterFormData = z.infer<typeof registerSchema>

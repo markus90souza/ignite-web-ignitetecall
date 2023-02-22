@@ -1,23 +1,21 @@
-import { styled, Heading, Text } from '@ignite-ui/react'
+import { styled, Heading, Text, Box } from '@ignite-ui/react'
 
 export const Container = styled('main', {
-  display: 'flex',
-  alignItems: 'center',
-  gap: '$20',
-  maxWidth: 'calc(100vw - (100vw - 1160px) / 2)',
-  height: '100vh',
-  marginLeft: 'auto',
+  maxWidth: 572,
+  padding: '0 $4',
+  margin: '$20 auto $4',
 })
 
-export const Hero = styled('div', {
-  maxWidth: 480,
-  padding: '0 $10',
+export const Header = styled('div', {
+  padding: '0 $6',
 
-  [` > ${Heading}`]: {},
+  [`> ${Heading}`]: {
+    lineHeight: '$base',
+  },
 
-  [` > ${Text}`]: {
-    marginTop: '$2',
+  [`> ${Text}`]: {
     color: '$gray200',
+    marginBottom: '$6',
   },
 
   '@media(max-width: 600px)': {
@@ -25,21 +23,31 @@ export const Hero = styled('div', {
     width: '100%',
 
     [`${Heading}`]: {
-      fontSize: '$6xl',
+      display: 'block',
+      fontSize: '$4xl',
       textAlign: 'center',
     },
 
     [`${Text}`]: {
-      fontSize: '$sm',
+      fontSize: '$xs',
       textAlign: 'center',
     },
   },
 })
 
-export const Preview = styled('div', {
-  padding: '$8',
+export const Form = styled(Box, {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$4',
+  marginTop: '$6',
 
-  '@media(max-width: 600px)': {
-    display: 'none',
+  label: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '$2',
   },
+})
+
+export const ErrorMessage = styled(Text, {
+  color: '#F75A68',
 })
