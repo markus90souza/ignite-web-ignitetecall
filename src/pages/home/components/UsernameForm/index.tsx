@@ -5,18 +5,22 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Form, Error } from './styles'
 import { usernameSchema, UsernameFormData } from './types'
+import { useRouter } from 'next/router'
 
 export function UsernameForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<UsernameFormData>({
     resolver: zodResolver(usernameSchema),
   })
 
+  const router = useRouter()
   const handlePreRegister = async (data: UsernameFormData) => {
-    console.log(data.username)
+    const { username } = data
+
+    await router.push(`/register?username=${username}`)
   }
   return (
     <Form as={'form'} onSubmit={handleSubmit(handlePreRegister)}>
@@ -26,7 +30,7 @@ export function UsernameForm() {
         placeholder="username"
         {...register('username')}
       />
-      <Button type="submit" size={'md'}>
+      <Button type="submit" size={'md'} disabled={isSubmitting}>
         Reservar
         <ArrowRight />
       </Button>
